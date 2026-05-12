@@ -1,11 +1,11 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}{{ article.title }} — BlogTech{% endblock %}
+{% block title %}{{ article.title }} / BlogTech{% endblock %}
 
 {% block body %}
 <h1>{{ article.title }}</h1>
 <p class="text-muted small">
-    Par {{ article.author.username }} — {{ article.createdAt|date('d/m/Y') }}
+    Par {{ article.author.username }} / {{ article.createdAt|date('d/m/Y') }}
     {% for category in article.categories %}
         <span class="badge bg-secondary">{{ category.name }}</span>
     {% endfor %}
@@ -20,7 +20,7 @@
     <div class="card mb-2">
         <div class="card-body">
             <p class="mb-1">{{ comment.content }}</p>
-            <small class="text-muted">Par {{ comment.author.username }} — {{ comment.createdAt|date('d/m/Y') }}</small>
+            <small class="text-muted">Par {{ comment.author.username }} / {{ comment.createdAt|date('d/m/Y') }}</small>
         </div>
     </div>
 {% else %}
