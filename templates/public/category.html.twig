@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ category.name }} — BlogTech{% endblock %}
+
+{% block body %}
+<h1>{{ category.name }}</h1>
+
+{% for article in articles %}
+    {% include 'components/_carte_article.html.twig' with { article: article } %}
+{% else %}
+    <p class="text-muted">Aucun article publié dans cette catégorie.</p>
+{% endfor %}
+
+<a href="{{ path('app_home') }}" class="btn btn-outline-secondary mt-3">Retour à l'accueil</a>
+{% endblock %}

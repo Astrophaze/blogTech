@@ -1,0 +1,25 @@
+{% extends 'admin/base.html.twig' %}
+
+{% block title %}{{ article.title }}{% endblock %}
+
+{% block admin_content %}
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <h1 class="h3 mb-0">{{ article.title }}</h1>
+    <a href="{{ path('app_admin_article_index') }}" class="btn btn-outline-secondary">Retour</a>
+</div>
+
+<table class="table">
+    <tbody>
+        <tr><th>ID</th><td>{{ article.id }}</td></tr>
+        <tr><th>Titre</th><td>{{ article.title }}</td></tr>
+        <tr><th>Contenu</th><td>{{ article.content }}</td></tr>
+        <tr><th>Slug</th><td>{{ article.slug }}</td></tr>
+        <tr><th>Statut</th><td>{{ article.status.value }}</td></tr>
+        <tr><th>Créé le</th><td>{{ article.createdAt ? article.createdAt|date('d/m/Y H:i') : '' }}</td></tr>
+        <tr><th>Mis à jour le</th><td>{{ article.updatedAt ? article.updatedAt|date('d/m/Y H:i') : '' }}</td></tr>
+    </tbody>
+</table>
+
+<a href="{{ path('app_admin_article_edit', {'id': article.id}) }}" class="btn btn-outline-secondary">Modifier</a>
+{{ include('admin/article/_delete_form.html.twig') }}
+{% endblock %}

@@ -1,0 +1,38 @@
+{# templates/admin/base.html.twig #}
+{% extends 'base.html.twig' %}
+
+{% block navbar_class %}mb-0{% endblock %}
+
+{% block container_class %}container-fluid p-0{% endblock %}
+
+{% block body %}
+<div class="row g-0">
+
+    <nav class="col-md-2 bg-dark p-3 min-vh-100">
+        <p class="text-white fw-bold mb-3">Administration</p>
+        <ul class="nav flex-column">
+            <li class="nav-item">
+                <a class="nav-link text-white" href="{{ path('app_admin_dashboard') }}">Dashboard</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-white" href="{{ path('app_admin_article_index') }}">Articles</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-white" href="{{ path('app_admin_category_index') }}">Catégories</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-white" href="{{ path('app_admin_comment_index') }}">Commentaires</a>
+            </li>
+            <li class="nav-item mt-3">
+                <a class="nav-link text-danger" href="{{ path('app_logout') }}">Déconnexion</a>
+            </li>
+        </ul>
+    </nav>
+
+    <main class="col-md-10 p-4">
+        {% block admin_content %}{% endblock %}
+    </main>
+
+</div>
+{% endblock %}
+        

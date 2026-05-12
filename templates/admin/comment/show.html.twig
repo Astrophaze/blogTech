@@ -1,0 +1,30 @@
+{% extends 'admin/base.html.twig' %}
+
+{% block title %}Commentaire #{{ comment.id }}{% endblock %}
+
+{% block admin_content %}
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <h1 class="h3 mb-0">Commentaire #{{ comment.id }}</h1>
+    <a href="{{ path('app_admin_comment_index') }}" class="btn btn-outline-secondary">Retour</a>
+</div>
+
+<table class="table">
+    <tbody>
+        <tr><th>ID</th><td>{{ comment.id }}</td></tr>
+        <tr><th>Contenu</th><td>{{ comment.content }}</td></tr>
+        <tr><th>Auteur</th><td>{{ comment.author.username }}</td></tr>
+        <tr><th>Article</th><td>{{ comment.article.title }}</td></tr>
+        <tr><th>Statut</th><td>
+            {% if comment.approved %}
+                <span class="badge bg-success">Approuvé</span>
+            {% else %}
+                <span class="badge bg-warning text-dark">En attente</span>
+            {% endif %}
+        </td></tr>
+        <tr><th>Créé le</th><td>{{ comment.createdAt ? comment.createdAt|date('d/m/Y H:i') : '' }}</td></tr>
+    </tbody>
+</table>
+
+<a href="{{ path('app_admin_comment_edit', {'id': comment.id}) }}" class="btn btn-outline-secondary">Modérer</a>
+{{ include('admin/comment/_delete_form.html.twig') }}
+{% endblock %}
