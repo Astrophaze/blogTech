@@ -12,6 +12,8 @@ export default class extends Controller {
     }
 
     async toggle() {
+        this.boutonTarget.disabled = true;
+
         const response = await fetch(this.urlValue, {
             method: 'PATCH',
             headers: {
@@ -28,5 +30,6 @@ export default class extends Controller {
         console.log(data);
 
         this.approvedValue = data.approved;
+        this.boutonTarget.disabled = false;
     }
 }

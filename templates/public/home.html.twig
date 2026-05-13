@@ -1,13 +1,14 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Accueil / BlogTech{% endblock %}
+{% block title %}Accueil / BlogTech
+{% endblock %}
 
 {% block body %}
-<h1 class="mb-4">Derniers articles</h1>
+	<h1 class="mb-4">Derniers articles</h1>
 
-{% for article in articles %}
-    {% include 'components/_carte_article.html.twig' with { article: article } %}
-{% else %}
-    <p>Aucun article publié pour le moment.</p>
-{% endfor %}
+	{% for article in articles %}
+		{% include 'components/_carte_article.html.twig' with { article: article } %}
+	{% else %}
+		<p>Aucun article publié pour le moment.</p>
+	{% endfor %}
 {% endblock %}

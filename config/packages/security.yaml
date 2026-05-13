@@ -21,9 +21,10 @@ security:
                 login_path: app_login
                 check_path: app_login
                 enable_csrf: true
+                default_target_path: app_admin_dashboard
             logout:
                 path: app_logout
 
     access_control:
         - { path: ^/admin, roles: ROLE_ADMIN }
-        - { path: ^/, roles: PUBLIC_ACCESS }
+        # - { path: ^/, roles: PUBLIC_ACCESS }
